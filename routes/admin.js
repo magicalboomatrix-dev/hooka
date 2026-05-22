@@ -5,6 +5,7 @@ const path = require('path');
 const Product = require('../models/Product');
 const Category = require('../models/Category');
 const Admin = require('../models/Admin');
+const Setting = require('../models/Setting');
 const { storage } = require('../config/cloudinary');
 
 // Auth middleware
@@ -524,6 +525,45 @@ router.delete('/products/:id', requireAuth, async (req, res) => {
   } catch (error) {
     req.flash('error_msg', error.message);
     res.redirect('/admin/products');
+  }
+});
+
+// Settings Page
+router.get('/settings', requireAuth, async (req, res) => {
+  try {
+    let whatsappSetting = await Setting.findOne({ key: 'whatsappNumber' });
+    const whatsappNumber = whatsappSetting ? whatsappSetting.value : '919876543210';
+    
+    res.render('admin/settings', {
+      layout: 'admin/layout',
+      title: 'Settings',
+      whatsappNumber
+    });
+  } catch (error) {
+    req.flash('error_msg', error.message);
+    res.redirect('/admin');
+  }
+});
+
+// Update Settings
+router.post('/settings', requireAuth, async (req, res) => {
+  try {
+    const { whatsappNumber } = req.body;
+    
+    // Strip spaces and + signs to ensure standard format for WhatsApp API
+    const cleanNumber = whatsappNumber.replace(/[\s\+]/g, '');
+    
+    await Setting.findOneAndUpdate(
+      { key: 'whatsappNumber' },
+      { value: cleanNumber },
+      { upsert: true, new: true }
+    );
+    
+    req.flash('success_msg', 'Settings updated successfully');
+    res.redirect('/admin/settings');
+  } catch (error) {
+    req.flash('error_msg', error.message);
+    res.redirect('/admin/settings');
   }
 });
 

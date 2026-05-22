@@ -64,6 +64,7 @@ app.set('layout', 'layout');
 // Routes
 app.use('/api/categories', require('./routes/categories'));
 app.use('/api/products', require('./routes/products'));
+app.use('/api/settings', require('./routes/settings'));
 app.use('/admin', require('./routes/admin'));
 
 // Serve static HTML files for frontend (converted to use API)

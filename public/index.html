@@ -16,8 +16,7 @@
 <link href="css/linearicons.css" rel="stylesheet">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/themify-icons.css" rel="stylesheet">
-
-
+<link href="css/cart.css" rel="stylesheet">
 </head>
 <body>
 
@@ -78,19 +77,12 @@
 
 	  <div class="nav-iteme"><a href="contact-us.html">Contact</a></div>
 	</div>
-    <!--div class="nav-right">
-      <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" class="icon" alt="search">
-      <img src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" class="icon" alt="user">
-      <div class="icon" id="cartIcon">
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" width="20">
-        <span class="cart-count">2</span>
-        <div class="cart-dropdown" id="cartDropdown">
-          <div class="cart-item"><span>Hookah Chillum</span><span>$45</span></div>
-          <div class="cart-item"><span>Desi Patta</span><span>$55</span></div>
-          <div class="cart-total">Total: $100</div>
-        </div>
+    <div class="nav-right">
+      <div class="icon" id="cartIcon" style="position: relative;">
+        <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" width="20" alt="cart">
+        <span class="cart-count" style="display: none;">0</span>
       </div>
-    </div-->
+    </div>
   </div>
 </div>
 
@@ -462,5 +454,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<script src="js/cart.js"></script>
 </body>
 </html>

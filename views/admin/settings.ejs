@@ -1,0 +1,38 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">
+      <i class="fas fa-cog" style="color: var(--primary); margin-right: 8px;"></i>
+      Store Settings
+    </h3>
+  </div>
+  <div class="card-body">
+    <div style="max-width: 600px;">
+      <h4 style="margin-bottom: 20px; color: var(--dark); font-weight: 600;">WhatsApp Integration</h4>
+      
+      <p style="color: var(--gray); font-size: 14px; margin-bottom: 24px; line-height: 1.6;">
+        Configure the store's official WhatsApp number. When clients click the <strong>WhatsApp Me</strong> button on a product details page or checkout their cart, they will be redirected to chat with this number, pre-populated with order and payment details.
+      </p>
+
+      <form action="/admin/settings" method="POST">
+        <div style="margin-bottom: 24px;">
+          <label for="whatsappNumber" style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; color: var(--dark);">
+            WhatsApp Number
+          </label>
+          <div style="position: relative; display: flex; align-items: center;">
+            <span style="position: absolute; left: 16px; color: var(--gray); font-weight: 500; font-size: 14px;">+</span>
+            <input type="text" id="whatsappNumber" name="whatsappNumber" value="<%= whatsappNumber %>" required placeholder="e.g. 919876543210"
+                   style="width: 100%; padding: 12px 16px 12px 30px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 14px; transition: all 0.3s ease; font-family: inherit;">
+          </div>
+          <small style="display: block; color: var(--gray); font-size: 12px; margin-top: 8px; line-height: 1.4;">
+            <i class="fas fa-info-circle" style="color: var(--primary); margin-right: 4px;"></i>
+            Please enter the full international number including the country code, but omitting any spaces, hyphens, leading plus (+), or double zero (00). E.g., for India enter <strong>919876543210</strong>, for USA enter <strong>12025550143</strong>.
+          </small>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="padding: 12px 28px; width: auto; min-width: 180px;">
+          <i class="fas fa-save" style="margin-right: 6px;"></i> Save Settings
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
