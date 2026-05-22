@@ -4,7 +4,7 @@
  * and redirection to WhatsApp with structured product and cart details.
  */
 
-const API_BASE = window.location.origin;
+const cartApiBase = window.location.origin;
 
 // State management
 let cartItems = [];
@@ -297,7 +297,7 @@ function setupEventListeners() {
 
       try {
         // Fetch WhatsApp number
-        const response = await fetch(`${API_BASE}/api/settings/whatsappNumber`);
+        const response = await fetch(`${cartApiBase}/api/settings/whatsappNumber`);
         const result = await response.json();
         const whatsappNumber = result.success && result.value ? result.value : '919876543210';
 
@@ -310,7 +310,7 @@ function setupEventListeners() {
           const itemTotal = itemPrice * item.quantity;
           subtotal += itemTotal;
           itemsText += `${index + 1}. *${item.name}* (Qty: ${item.quantity}) - $${itemTotal.toFixed(2)}\n`;
-          itemsText += `   _Link:_ ${API_BASE}/product-description.html?id=${item.id}\n`;
+          itemsText += `   _Link:_ ${cartApiBase}/product-description.html?id=${item.id}\n`;
           if (item.sku) itemsText += `   _SKU:_ ${item.sku}\n`;
           itemsText += `\n`;
         });
@@ -373,7 +373,7 @@ function setupStorefrontProductDetailsPage() {
           addToCart(window.currentProduct, qty);
         } else {
           // Fallback to fetch if not yet loaded globally
-          const response = await fetch(`${API_BASE}/api/products/${productId}`);
+          const response = await fetch(`${cartApiBase}/api/products/${productId}`);
           const result = await response.json();
           if (result.success) {
             addToCart(result.data, qty);
@@ -404,10 +404,10 @@ function setupWhatsAppSingleProductHandler() {
 
         // Fetch WhatsApp number and Product details (use global product if available)
         const [settingsRes, productRes] = await Promise.all([
-          fetch(`${API_BASE}/api/settings/whatsappNumber`).then(r => r.json()),
+          fetch(`${cartApiBase}/api/settings/whatsappNumber`).then(r => r.json()),
           window.currentProduct 
             ? Promise.resolve({ success: true, data: window.currentProduct }) 
-            : fetch(`${API_BASE}/api/products/${productId}`).then(r => r.json())
+            : fetch(`${cartApiBase}/api/products/${productId}`).then(r => r.json())
         ]);
 
         const whatsappNumber = settingsRes.success && settingsRes.value ? settingsRes.value : '919876543210';
