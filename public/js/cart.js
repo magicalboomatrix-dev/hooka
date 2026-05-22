@@ -10,13 +10,19 @@ const API_BASE = window.location.origin;
 let cartItems = [];
 
 // Initialize on page load
-document.addEventListener('DOMContentLoaded', () => {
+function initCart() {
   loadCartFromStorage();
   injectCartElements();
   updateNavbarCartCount();
   setupEventListeners();
   setupWhatsAppSingleProductHandler();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCart);
+} else {
+  initCart();
+}
 
 // Load cart items from localStorage
 function loadCartFromStorage() {
@@ -144,7 +150,8 @@ function renderCartDrawer() {
   let itemsHtml = '';
 
   cartItems.forEach(item => {
-    const itemTotal = item.price * item.quantity;
+    const itemPrice = typeof item.price === 'number' ? item.price : parseFloat(item.price) || 0;
+    const itemTotal = itemPrice * item.quantity;
     subtotal += itemTotal;
 
     itemsHtml += `
@@ -152,7 +159,7 @@ function renderCartDrawer() {
         <img src="${item.image}" alt="${item.name}">
         <div class="cart-item-details">
           <h4 class="cart-item-title">${item.name}</h4>
-          <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+          <div class="cart-item-price">$${itemPrice.toFixed(2)}</div>
           <div class="cart-item-controls">
             <div class="cart-qty-selector">
               <button onclick="changeDrawerQty('${item.id}', -1)">-</button>
@@ -188,6 +195,7 @@ function closeCart() {
 function addToCart(product, quantity = 1) {
   const existingItemIndex = cartItems.findIndex(item => item.id === product._id);
   const mainImage = product.mainImage || (product.images && product.images[0]) || 'images/product_img-1.png';
+  const priceVal = typeof product.price === 'number' ? product.price : parseFloat(product.price) || 0;
 
   if (existingItemIndex > -1) {
     cartItems[existingItemIndex].quantity += quantity;
@@ -195,7 +203,7 @@ function addToCart(product, quantity = 1) {
     cartItems.push({
       id: product._id,
       name: product.name,
-      price: product.price,
+      price: priceVal,
       image: mainImage,
       quantity: quantity,
       sku: product.sku || ''
@@ -298,7 +306,8 @@ function setupEventListeners() {
         let itemsText = '';
 
         cartItems.forEach((item, index) => {
-          const itemTotal = item.price * item.quantity;
+          const itemPrice = typeof item.price === 'number' ? item.price : parseFloat(item.price) || 0;
+          const itemTotal = itemPrice * item.quantity;
           subtotal += itemTotal;
           itemsText += `${index + 1}. *${item.name}* (Qty: ${item.quantity}) - $${itemTotal.toFixed(2)}\n`;
           itemsText += `   _Link:_ ${API_BASE}/product-description.html?id=${item.id}\n`;
@@ -352,21 +361,23 @@ function setupStorefrontProductDetailsPage() {
   const productId = urlParams.get('id');
   if (!productId) return;
 
-  // Let's hook the Add to Cart button (uncommented class add-btn)
-  // Wait, in product-description.html, the Shop Now/Add to Cart button might have .add-btn inside a commented area.
-  // We will uncomment the area in the HTML modify step, and then reference it here.
   const addToCartBtn = document.querySelector('.cart-section .add-btn');
   if (addToCartBtn) {
     addToCartBtn.addEventListener('click', async (e) => {
       e.preventDefault();
       try {
-        // Fetch current product details from API
-        const response = await fetch(`${API_BASE}/api/products/${productId}`);
-        const result = await response.json();
-        if (result.success) {
-          const qtyText = document.getElementById('qty');
-          const qty = qtyText ? parseInt(qtyText.textContent) || 1 : 1;
-          addToCart(result.data, qty);
+        const qtyText = document.getElementById('qty');
+        const qty = qtyText ? parseInt(qtyText.textContent) || 1 : 1;
+
+        if (window.currentProduct) {
+          addToCart(window.currentProduct, qty);
+        } else {
+          // Fallback to fetch if not yet loaded globally
+          const response = await fetch(`${API_BASE}/api/products/${productId}`);
+          const result = await response.json();
+          if (result.success) {
+            addToCart(result.data, qty);
+          }
         }
       } catch (error) {
         console.error('Error adding product to cart:', error);
@@ -391,22 +402,25 @@ function setupWhatsAppSingleProductHandler() {
         const productId = urlParams.get('id');
         if (!productId) return;
 
-        // Fetch WhatsApp number and Product details
+        // Fetch WhatsApp number and Product details (use global product if available)
         const [settingsRes, productRes] = await Promise.all([
           fetch(`${API_BASE}/api/settings/whatsappNumber`).then(r => r.json()),
-          fetch(`${API_BASE}/api/products/${productId}`).then(r => r.json())
+          window.currentProduct 
+            ? Promise.resolve({ success: true, data: window.currentProduct }) 
+            : fetch(`${API_BASE}/api/products/${productId}`).then(r => r.json())
         ]);
 
         const whatsappNumber = settingsRes.success && settingsRes.value ? settingsRes.value : '919876543210';
         if (!productRes.success) return;
 
         const product = productRes.data;
+        const priceVal = typeof product.price === 'number' ? product.price : parseFloat(product.price) || 0;
 
         // Format message
         const message = `👋 Hello! I am highly interested in discussing payment and delivery details for this product:
 
 🏷️ *Name:* ${product.name}
-💰 *Price:* $${product.price.toFixed(2)}
+💰 *Price:* $${priceVal.toFixed(2)}
 ${product.sku ? `🔑 *SKU:* ${product.sku}\n` : ''}🔗 *Product Link:* ${window.location.href}
 
 Could you please assist me with the checkout process and shipping options?`;

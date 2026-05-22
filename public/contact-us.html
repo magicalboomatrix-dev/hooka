@@ -276,8 +276,10 @@ mobileCatToggle.addEventListener('click', () => {
 // Cart toggle
 const cartIcon=document.getElementById('cartIcon');
 const cartDropdown=document.getElementById('cartDropdown');
-cartIcon.addEventListener('click',()=>cartDropdown.classList.toggle('active'));
-window.addEventListener('click',(e)=>{if(!cartIcon.contains(e.target)){cartDropdown.classList.remove('active');}});
+if (cartIcon && cartDropdown) {
+  cartIcon.addEventListener('click',()=>cartDropdown.classList.toggle('active'));
+  window.addEventListener('click',(e)=>{if(!cartIcon.contains(e.target)){cartDropdown.classList.remove('active');}});
+}
 
 // Testimonial slider
 const testimonials=[
