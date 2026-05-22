@@ -1,0 +1,79 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">
+      <i class="fas fa-tags" style="color: var(--primary);"></i>
+      All Categories
+    </h3>
+    <a href="/admin/categories/add" class="btn btn-primary btn-sm">
+      <i class="fas fa-plus"></i> Add Category
+    </a>
+  </div>
+  <div class="card-body">
+    <% if (categories && categories.length > 0) { %>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Slug</th>
+              <th>Products</th>
+              <th>Status</th>
+              <th>Created</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% categories.forEach(category => { %>
+              <tr>
+                <td>
+                  <div style="display: flex; align-items: center; gap: 12px;">
+                    <img src="<%= category.image %>" alt="<%= category.name %>" class="product-thumb">
+                    <div>
+                      <div style="font-weight: 600;"><%= category.name %></div>
+                      <% if (category.description) { %>
+                        <div style="font-size: 12px; color: var(--gray); max-width: 200px;" class="truncate">
+                          <%= category.description %>
+                        </div>
+                      <% } %>
+                    </div>
+                  </div>
+                </td>
+                <td><code><%= category.slug %></code></td>
+                <td>
+                  <span class="badge badge-primary">0 products</span>
+                </td>
+                <td>
+                  <span class="<%= category.isActive ? 'badge badge-success' : 'badge badge-warning' %>">
+                    <%= category.isActive ? 'Active' : 'Inactive' %>
+                  </span>
+                </td>
+                <td><%= new Date(category.createdAt).toLocaleDateString() %></td>
+                <td>
+                  <div style="display: flex; gap: 8px;">
+                    <a href="/admin/categories/<%= category._id %>/edit" class="btn btn-sm btn-secondary">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <form action="/admin/categories/<%= category._id %>?_method=DELETE" method="POST" style="display: inline;">
+                      <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure? This will delete the category.')">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    <% } else { %>
+      <div class="empty-state">
+        <i class="fas fa-tags"></i>
+        <h3>No Categories Found</h3>
+        <p>Start by adding your first category</p>
+        <a href="/admin/categories/add" class="btn btn-primary" style="margin-top: 16px;">
+          <i class="fas fa-plus"></i> Add Category
+        </a>
+      </div>
+    <% } %>
+  </div>
+</div>

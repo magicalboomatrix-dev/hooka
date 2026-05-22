@@ -1,0 +1,146 @@
+<!-- Stats Grid -->
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-header">
+      <div>
+        <div class="stat-value"><%= stats.products || 0 %></div>
+        <div class="stat-label">Total Products</div>
+      </div>
+      <div class="stat-icon purple">
+        <i class="fas fa-box"></i>
+      </div>
+    </div>
+  </div>
+  
+  <div class="stat-card">
+    <div class="stat-header">
+      <div>
+        <div class="stat-value"><%= stats.categories || 0 %></div>
+        <div class="stat-label">Categories</div>
+      </div>
+      <div class="stat-icon green">
+        <i class="fas fa-tags"></i>
+      </div>
+    </div>
+  </div>
+  
+  <div class="stat-card">
+    <div class="stat-header">
+      <div>
+        <div class="stat-value"><%= stats.featured || 0 %></div>
+        <div class="stat-label">Featured Products</div>
+      </div>
+      <div class="stat-icon orange">
+        <i class="fas fa-star"></i>
+      </div>
+    </div>
+  </div>
+  
+  <div class="stat-card">
+    <div class="stat-header">
+      <div>
+        <div class="stat-value"><%= stats.outOfStock || 0 %></div>
+        <div class="stat-label">Out of Stock</div>
+      </div>
+      <div class="stat-icon red">
+        <i class="fas fa-exclamation-triangle"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Recent Products -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">
+      <i class="fas fa-clock-rotate-left" style="color: var(--primary);"></i>
+      Recently Added Products
+    </h3>
+    <a href="/admin/products/add" class="btn btn-primary btn-sm">
+      <i class="fas fa-plus"></i> Add New
+    </a>
+  </div>
+  <div class="card-body">
+    <% if (recentProducts && recentProducts.length > 0) { %>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% recentProducts.forEach(product => { %>
+              <tr>
+                <td>
+                  <div style="display: flex; align-items: center; gap: 12px;">
+                    <img src="<%= product.mainImage %>" alt="<%= product.name %>" class="product-thumb">
+                    <div>
+                      <div style="font-weight: 600;"><%= product.name %></div>
+                      <div style="font-size: 12px; color: var(--gray);">
+                        <%= new Date(product.createdAt).toLocaleDateString() %>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td><%= product.category ? product.category.name : 'N/A' %></td>
+                <td>
+                  <span style="font-weight: 600;">$<%= product.price.toFixed(2) %></span>
+                  <% if (product.comparePrice > 0) { %>
+                    <del style="color: var(--gray); margin-left: 8px;">$<%= product.comparePrice.toFixed(2) %></del>
+                  <% } %>
+                </td>
+                <td>
+                  <span class="<%= product.stock > 0 ? 'badge badge-success' : 'badge badge-danger' %>">
+                    <%= product.stock %> units
+                  </span>
+                </td>
+                <td>
+                  <span class="<%= product.isActive ? 'badge badge-success' : 'badge badge-warning' %>">
+                    <%= product.isActive ? 'Active' : 'Inactive' %>
+                  </span>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    <% } else { %>
+      <div class="empty-state">
+        <i class="fas fa-box-open"></i>
+        <h3>No Products Yet</h3>
+        <p>Start adding products to see them here</p>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="card" style="margin-top: 24px;">
+  <div class="card-header">
+    <h3 class="card-title">
+      <i class="fas fa-bolt" style="color: var(--warning);"></i>
+      Quick Actions
+    </h3>
+  </div>
+  <div class="card-body">
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+      <a href="/admin/products/add" class="btn btn-primary" style="justify-content: center;">
+        <i class="fas fa-plus"></i> Add Product
+      </a>
+      <a href="/admin/categories/add" class="btn btn-secondary" style="justify-content: center;">
+        <i class="fas fa-tag"></i> Add Category
+      </a>
+      <a href="/admin/products" class="btn btn-secondary" style="justify-content: center;">
+        <i class="fas fa-list"></i> View All Products
+      </a>
+      <a href="/" target="_blank" class="btn btn-secondary" style="justify-content: center;">
+        <i class="fas fa-store"></i> View Store
+      </a>
+    </div>
+  </div>
+</div>

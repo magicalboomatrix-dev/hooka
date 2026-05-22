@@ -1,0 +1,101 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">
+      <i class="fas fa-user-circle" style="color: var(--primary);"></i>
+      My Profile
+    </h3>
+  </div>
+  <div class="card-body">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+      <!-- Profile Info -->
+      <div>
+        <h4 style="margin-bottom: 20px; color: var(--dark);">Account Information</h4>
+        
+        <div style="background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+          <div style="margin-bottom: 16px;">
+            <label style="font-size: 12px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px;">Username</label>
+            <p style="font-size: 16px; font-weight: 600; margin-top: 4px;"><%= admin.username %></p>
+          </div>
+          
+          <div style="margin-bottom: 16px;">
+            <label style="font-size: 12px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px;">Email</label>
+            <p style="font-size: 16px; font-weight: 600; margin-top: 4px;"><%= admin.email %></p>
+          </div>
+          
+          <div style="margin-bottom: 16px;">
+            <label style="font-size: 12px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px;">Name</label>
+            <p style="font-size: 16px; font-weight: 600; margin-top: 4px;"><%= admin.name %></p>
+          </div>
+          
+          <div style="margin-bottom: 16px;">
+            <label style="font-size: 12px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px;">Role</label>
+            <p style="font-size: 16px; font-weight: 600; margin-top: 4px;">
+              <span class="badge badge-<%= admin.role === 'superadmin' ? 'warning' : 'primary' %>">
+                <%= admin.role.toUpperCase() %>
+              </span>
+            </p>
+          </div>
+          
+          <div style="margin-bottom: 16px;">
+            <label style="font-size: 12px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px;">Last Login</label>
+            <p style="font-size: 16px; font-weight: 600; margin-top: 4px;">
+              <%= admin.lastLogin ? new Date(admin.lastLogin).toLocaleString() : 'Never' %>
+            </p>
+          </div>
+          
+          <div>
+            <label style="font-size: 12px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px;">Account Status</label>
+            <p style="font-size: 16px; font-weight: 600; margin-top: 4px;">
+              <span class="badge badge-<%= admin.isActive ? 'success' : 'danger' %>">
+                <%= admin.isActive ? 'Active' : 'Inactive' %>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Change Password -->
+      <div>
+        <h4 style="margin-bottom: 20px; color: var(--dark);">Change Password</h4>
+        
+        <form action="/admin/profile/change-password" method="POST">
+          <div style="margin-bottom: 20px;">
+            <label for="currentPassword" style="display: block; margin-bottom: 8px; font-weight: 500; font-size: 14px;">Current Password</label>
+            <input type="password" id="currentPassword" name="currentPassword" required
+                   style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 14px;">
+          </div>
+          
+          <div style="margin-bottom: 20px;">
+            <label for="newPassword" style="display: block; margin-bottom: 8px; font-weight: 500; font-size: 14px;">New Password</label>
+            <input type="password" id="newPassword" name="newPassword" required minlength="6"
+                   style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 14px;">
+            <small style="color: var(--gray); font-size: 12px;">Minimum 6 characters</small>
+          </div>
+          
+          <div style="margin-bottom: 24px;">
+            <label for="confirmPassword" style="display: block; margin-bottom: 8px; font-weight: 500; font-size: 14px;">Confirm New Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required minlength="6"
+                   style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 14px;">
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <i class="fas fa-key"></i> Update Password
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Password confirmation validation
+  document.querySelector('form').addEventListener('submit', function(e) {
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    
+    if (newPassword !== confirmPassword) {
+      e.preventDefault();
+      alert('New passwords do not match!');
+    }
+  });
+</script>

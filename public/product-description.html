@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desi Hookah</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet"> 
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="owlcarousel/css/owl.carousel.min.css">
+<link rel="stylesheet" href="owlcarousel/css/owl.theme.css">
+<link rel="stylesheet" href="owlcarousel/css/owl.theme.default.min.css">
+
+<link href="css/all.min.css" rel="stylesheet">
+<link href="css/flaticon.css" rel="stylesheet">
+<link href="css/themify-icons.css" rel="stylesheet">
+<link href="css/ionicons.min.css" rel="stylesheet">
+<link href="css/linearicons.css" rel="stylesheet">
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+
+
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <!--div class="container topbar-inner">
+    <div class="top-left">
+      <span><i class="flaticon-shipped"></i> Free Standard Shipping on All Australian Orders Over $99</span>
+    </div>
+    <div class="top-right">
+      <span>English ▼</span>
+      <span class="divider">|</span>
+      <span>USD ▼</span>
+      <span class="divider">|</span>
+      <span><i class="linearicons-phone-bubble"></i> 123-456-7890</span>
+      <span class="divider">|</span>
+      <span><i class="linearicons-envelope"></i> desihookah@gmail.com</span>
+      <span class="divider">|</span>
+      <span>Login / Register</span>
+    </div>
+  </div-->
+</div>
+
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="container flex">
+    
+	<a class="navbar-brand" href="index.html">                   
+		<img class="logo_dark" src="images/HUKKA-logo.png" alt="logo">
+	</a>
+	<div class="hamburger" id="hamburger">☰</div>
+    <div class="nav-links">
+      <div class="nav-item"><a href="index.html">Home</a></div>
+      <div class="nav-item"><a href="product-list.html">Shop</a></div>
+      <div class="nav-item dropdown">
+	  <a href="#">Categories <div class="box-icon-icon linearicons-chevron-down"></div></a>
+
+	  <!-- Desktop Dropdown -->
+	  <div class="dropdown-menu" id="desktopCatMenu">
+		<!-- Categories loaded dynamically -->
+	  </div>
+	  </div>
+      <div class="nav-item"><a href="#">About</a>  </div>
+      <div class="nav-item"><a href="contact-us.html">Contact</a></div>
+    </div>
+	
+	<div class="mobile-menu" id="mobileMenu">
+	  <div class="nav-iteme"><a href="index.html">Home</a></div>
+	  <div class="nav-iteme"><a href="product-list.html">Shop</a></div>
+	  <div class="mobile-dropdown">
+		  <div class="mobile-drop-head" id="mobileCatToggle">
+			Categories ▾
+		  </div>
+		  <div class="mobile-drop-menu" id="mobileCatMenu">
+			<!-- Categories loaded dynamically -->
+		  </div>
+		</div>
+	  <div class="nav-iteme"><a href="#">About</a></div>
+	  <div class="nav-iteme"><a href="contact-us.html">Contact</a></div>
+	</div>
+    <!--div class="nav-right">
+      <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" class="icon" alt="search">
+      <img src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" class="icon" alt="user">
+      <div class="icon" id="cartIcon">
+        <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" width="20">
+        <span class="cart-count">2</span>
+        <div class="cart-dropdown" id="cartDropdown">
+          <div class="cart-item"><span>Hookah Chillum</span><span>$45</span></div>
+          <div class="cart-item"><span>Desi Patta</span><span>$55</span></div>
+          <div class="cart-total">Total: $100</div>
+        </div>
+      </div>
+    </div-->
+  </div>
+</div>
+
+<div class="bg" style="background: #fff;">
+<div class="beadcrumbs pt-5">
+<div class="container">
+<ol class="breadcrumb justify-content-strat">
+	<li class="breadcrumb-item"><a href="#">Home</a></li>
+	<li class="breadcrumb-item"><a href="#">Products</a></li>
+	<li class="breadcrumb-item active">Desi Hookah Chillium</li>
+</ol>
+</div>   
+</div>   
+
+<div class="product-description-page">
+<section class="section image-info-section pb-4">
+  <div class="container">
+  <div class="container-inn">
+
+  <!-- LEFT: IMAGE SECTION -->
+  <div class="product-images">
+    <div class="main-image product-image">
+		<img id="mainImg" src="images/main-pro.png" />
+		<a href="#" class="product_img_zoom" title="Zoom">
+			<span class="linearicons-zoom-in"></span>
+		</a>
+    </div>
+
+    <div class="thumbnails" id="productThumbnails">
+      <!-- Thumbnails loaded dynamically -->
+    </div>
+  </div>
+
+  <!-- RIGHT: DETAILS -->
+  <div class="product-details pr_detail">
+    <span class="badge" id="productBadge"><img src="images/bs-ic1.jpg" /></span>
+
+    <h1 id="productName">Loading...</h1>
+
+    <div class="product_price" id="productPrice">
+		<span class="price">$0.00</span>
+	</div>
+
+    <div class="rating_wrap" id="productRating">
+		<div class="rating">
+			<div class="product_rate" style="width:0%"></div>
+		</div>
+		<span class="rating_num">(0 reviews)</span>
+	</div>
+
+    <p class="desc pr_desc" id="productShortDesc">
+      Loading product details...
+    </p>
+
+    <ul class="features" id="productFeatures">
+      <!-- Features loaded dynamically -->
+    </ul>
+	<div class="sectiosn pt-0 mb-0 offer-products-section">
+    	<div class="container" style="padding: 0;">
+            <div class="row g-0">
+                <div class="col-lg-4">	
+                    <div class="icon_box icon_box_style1">
+                        <div class="icon">
+                            <i class="flaticon-shipped"></i>
+                        </div>
+                        <div class="icon_box_content">
+                            <h5>Free Delivery</h5>
+                            <p>On all orders $99</p>
+							
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">	
+                    <div class="icon_box icon_box_style1">
+                        <div class="icon">
+                            <i class="flaticon-money-back"></i>
+                        </div>
+                        <div class="icon_box_content">
+                            <h5>30 Day Return</h5>
+                            <p>Hassle free return policy</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">	
+                    <div class="icon_box icon_box_style1">
+                        <div class="icon">
+                            <i class="flaticon-support"></i>
+                        </div>
+                        <div class="icon_box_content">
+                            <h5>27/4 Support</h5>
+                            <p>We're here to help you</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<br>
+    <!-- Quantity -->
+    <!--div class="cart-section">
+      <div class="qty">
+        <button onclick="decrease()">-</button>
+        <span id="qty">1</span>
+        <button onclick="increase()">+</button>
+      </div>
+
+      <button class="add-btn">Shop Now</button>
+    </div-->
+
+    <button class="whatsapp"><i class="ion-social-whatsapp"></i> WhatsApp Me</button>
+	
+	<div class="product_share">
+		<span>Share:</span>
+		<ul class="social_icons">
+			<li><a href="#"><i class="ion-social-facebook"></i></a></li>
+			<li><a href="#"><i class="ion-social-twitter"></i></a></li>
+			<li><a href="#"><i class="ion-social-googleplus"></i></a></li>
+			<li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
+			<li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+		</ul>
+	</div>
+
+  </div>
+  </div>
+</div>
+</section>
+
+<section class="section feature-info-section pt-0 pb-5">
+  <div class="container">
+  <div class="row" id="featureBoxes">
+	<!-- Feature boxes loaded dynamically -->
+  </div>
+  </div>
+</section>
+
+<section class="desc-tabs">
+<div class="container">
+
+        <div class="row">
+        	<div class="col-12">
+            	<div class="tab-style3">
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description" role="tab" aria-controls="Description" aria-selected="true">Description</a>
+                      	</li>
+                      	<li class="nav-item">
+                        	<a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab" href="#Additional-info" role="tab" aria-controls="Additional-info" aria-selected="false">Additional info</a>
+                      	</li>
+                      	<!--li class="nav-item">
+                        	<a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews" role="tab" aria-controls="Reviews" aria-selected="false">Reviews (2)</a>
+                      	</li-->
+                    </ul>
+                	<div class="tab-content shop_info_tab">
+                      	<div class="tab-pane fade show active" id="Description" role="tabpanel" aria-labelledby="Description-tab">
+                        	<div id="productDescription">Loading description...</div>
+                      </div>
+                      <div class="tab-pane fade" id="Additional-info" role="tabpanel" aria-labelledby="Additional-info-tab">
+                        	<table class="table table-bordered" id="productSpecifications">
+                            	<tbody>
+                                	<tr><td colspan="2">Loading specifications...</td></tr>
+                            	</tbody>
+                        	</table>
+                      	</div>                      	
+                	</div>
+                </div>
+            </div>
+        </div>
+		</div>
+
+</section>
+
+
+<section class="section rel-products-section pb-4">
+  <div class="container">
+  <div class="row">
+        	<div class="col-12">
+            	<div class="heading_s1">
+                	<h3>You May Also Like</h3>
+                </div>
+            	<div class="releted_product_slider carousel_slider owl-carousel owl-theme" id="relatedProducts" data-margin="5"
+				data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "5"}}'>
+                    <!-- Related products loaded dynamically -->
+                </div>
+            </div>
+        </div>
+  </div>
+</section>
+
+
+<!-- START SECTION SHOP INFO -->
+
+<!-- END SECTION SHOP INFO -->
+</div>
+
+
+</div>
+<!-- END MAIN CONTENT -->
+<!-- Footer -->
+<div class="footer" style="background:#6b1616;padding:50px 0 0">
+  <div class="container">
+
+    <div class="container-inn" style="">
+      
+      <!-- Logo + About -->
+      <div>
+        <a class="navbar-brand" href="index.html">                   
+		<img class="logo_dark" src="images/HUKKA-logo.png" alt="logo">
+		</a>
+        <p style="color:#ddd;line-height:1.7;font-size:14px;margin-bottom:15px">
+          Premium handcrafted hookahs designed for smooth and rich smoking experience. Built with tradition and modern quality.
+        </p>
+        <div style="display:flex;gap:10px" class='meida-icons'>
+          <a href="#"><img class="ic" src="images/sci1.jpg" alt="icon"></a>
+          <a href="#"><img class="ic" src="images/sci2.jpg" alt="icon"></a>
+          <a href="#"><img class="ic" src="images/sci3.jpg" alt="icon"></a>
+          <a href="#"><img class="ic" src="images/sci4.jpg" alt="icon"></a>
+          <a href="#"><img class="ic" src="images/sci5.jpg" alt="icon"></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 style="margin-bottom:15px">Quick Links</h4>
+        <ul style="list-style:none;color:#ddd;font-size:14px;line-height:2;padding: 0;">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="product-list.html">Shop</a></li>
+          <li><a href="product-list.html?category=hookaah">Categories</a></li>
+          <li><a href="contact-us.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Customer Service -->
+      <div>
+        <h4 style="margin-bottom:15px">Customer Service</h4>
+        <ul style="list-style:none;color:#ddd;font-size:14px;line-height:2;padding: 0;">
+          <li><a href="shipping-policy.html">Shipping Policy</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <h4 style="margin-bottom:15px">Subscribe Newsletter</h4>
+        <p style="color:#ddd;font-size:14px;margin-bottom:15px">Get updates on latest products & offers</p>
+        <div style="display:flex;background:#fff;border-radius:6px;overflow:hidden">
+          <input type="email" placeholder="Your email" style="flex:1;padding:10px;border:none;outline:none">
+          <button style="background:#000;color:#fff;padding:10px 15px;border:none">→</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Footer -->
+    <div style="justify-content: center;border-top:1px solid rgba(255,255,255,0.2);padding:15px 0;display:flex;align-items:center;flex-wrap:wrap">
+      <p style="color:#ddd;font-size:13px">© 2026 Desi Hookah. All Rights Reserved.</p>
+  
+      <!--div style="display:flex;gap:10px;margin-top:10px">
+        <span>💳</span>
+        <span>💳</span>
+        <span>💳</span>
+      </div-->
+    </div>
+
+  </div>
+</div>
+
+
+<script src="js/jquery-3.7.1.min.js"></script> 
+<script src="bootstrap/js/bootstrap.min.js"></script> 
+<!-- owl-carousel min js  --> 
+<script src="owlcarousel/js/owl.carousel.min.js"></script>
+
+<script>
+// Mobile menu toggle
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('active');
+});
+
+// Close menu on outside click
+window.addEventListener('click', (e) => {
+  if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+    mobileMenu.classList.remove('active');
+  }
+});
+
+// Cart toggle
+const cartIcon=document.getElementById('cartIcon');
+const cartDropdown=document.getElementById('cartDropdown');
+cartIcon.addEventListener('click',()=>cartDropdown.classList.toggle('active'));
+window.addEventListener('click',(e)=>{if(!cartIcon.contains(e.target)){cartDropdown.classList.remove('active');}});
+
+</script>
+
+<script>
+let quantity = 1;
+
+function increase() {
+  quantity++;
+  document.getElementById("qty").innerText = quantity;
+}
+
+function decrease() {
+  if (quantity > 1) {
+    quantity--;
+    document.getElementById("qty").innerText = quantity;
+  }
+}
+
+function changeImage(element) {
+  document.getElementById("mainImg").src = element.src;
+}
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const tabLinks = document.querySelectorAll(".nav-link");
+    const tabPanes = document.querySelectorAll(".tab-pane");
+
+    tabLinks.forEach(link => {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            // Remove active class from all tabs
+            tabLinks.forEach(l => l.classList.remove("active"));
+            tabPanes.forEach(p => {
+                p.classList.remove("show", "active");
+            });
+
+            // Add active class to clicked tab
+            this.classList.add("active");
+
+            // Get target tab
+            const targetId = this.getAttribute("href");
+            const targetPane = document.querySelector(targetId);
+
+            // Show target tab
+            if (targetPane) {
+                targetPane.classList.add("show", "active");
+            }
+        });
+    });
+});
+</script>
+
+<script>
+function carousel_slider() {
+	$('.carousel_slider').each( function() {
+		var $carousel = $(this);
+		$carousel.owlCarousel({
+			dots : $carousel.data("dots"),
+			loop : $carousel.data("loop"),
+			items: $carousel.data("items"),
+			margin: $carousel.data("margin"),
+			mouseDrag: $carousel.data("mouse-drag"),
+			touchDrag: $carousel.data("touch-drag"),
+			autoHeight: $carousel.data("autoheight"),
+			center: $carousel.data("center"),
+			nav: $carousel.data("nav"),
+			rewind: $carousel.data("rewind"),
+			navText: ['<i class="ion-ios-arrow-left"></i>', '<i class="ion-ios-arrow-right"></i>'],
+			autoplay : $carousel.data("autoplay"),
+			animateIn : $carousel.data("animate-in"),
+			animateOut: $carousel.data("animate-out"),
+			autoplayTimeout : $carousel.data("autoplay-timeout"),
+			smartSpeed: $carousel.data("smart-speed"),
+			responsive: $carousel.data("responsive")
+		});	
+	});
+}
+
+$(document).ready(function () {
+	carousel_slider();
+});
+</script>
+
+<script>
+// Dynamic Category Loading for dropdown menus
+const API_BASE = window.location.origin;
+
+async function loadCategories() {
+  try {
+    const response = await fetch(`${API_BASE}/api/categories`);
+    const result = await response.json();
+    
+    if (result.success && result.data.length > 0) {
+      // Desktop Dropdown Menu
+      const desktopCatMenu = document.getElementById('desktopCatMenu');
+      if (desktopCatMenu) {
+        const dropdownHtml = result.data.map(cat => 
+          `<a href="product-list.html?category=${cat.slug}">${cat.name}</a>`
+        ).join('');
+        desktopCatMenu.innerHTML = dropdownHtml;
+      }
+      
+      // Mobile Dropdown Menu
+      const mobileCatMenu = document.getElementById('mobileCatMenu');
+      if (mobileCatMenu) {
+        const mobileDropdownHtml = result.data.map(cat => 
+          `<a href="product-list.html?category=${cat.slug}">${cat.name}</a>`
+        ).join('');
+        mobileCatMenu.innerHTML = mobileDropdownHtml;
+      }
+    }
+  } catch (error) {
+    console.error('Failed to load categories:', error);
+  }
+}
+
+// Load categories when page loads
+document.addEventListener('DOMContentLoaded', () => {
+  loadCategories();
+  loadProductDetails();
+});
+
+// Load product details from API
+async function loadProductDetails() {
+  try {
+    // Get product ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    if (!productId) {
+      console.error('No product ID in URL');
+      return;
+    }
+
+    const response = await fetch(`${API_BASE}/api/products/${productId}`);
+    const result = await response.json();
+
+    if (!result.success) {
+      console.error('Failed to load product:', result.message);
+      return;
+    }
+
+    const product = result.data;
+    renderProductDetails(product);
+  } catch (error) {
+    console.error('Error loading product:', error);
+  }
+}
+
+function renderProductDetails(product) {
+  // Update page title
+  document.title = product.name + ' | Desi Hookah';
+
+  // Update breadcrumb
+  document.querySelector('.breadcrumb-item.active').textContent = product.name;
+
+  // Product Name
+  document.getElementById('productName').textContent = product.name;
+
+  // Badge
+  const badgeEl = document.getElementById('productBadge');
+  if (product.badge) {
+    badgeEl.innerHTML = `<img src="images/bs-ic1.jpg" /> ${product.badge}`;
+    badgeEl.style.display = 'inline-flex';
+  } else {
+    badgeEl.style.display = 'none';
+  }
+
+  // Price
+  const priceEl = document.getElementById('productPrice');
+  if (product.comparePrice > 0 && product.comparePrice > product.price) {
+    priceEl.innerHTML = `
+      <span class="price">$${product.price.toFixed(2)}</span>
+      <del>$${product.comparePrice.toFixed(2)}</del>
+      <div class="on_sale">
+        <span>${product.discount}% Off</span>
+      </div>
+    `;
+  } else {
+    priceEl.innerHTML = `<span class="price">$${product.price.toFixed(2)}</span>`;
+  }
+
+  // Rating
+  const ratingEl = document.getElementById('productRating');
+  const ratingPercent = (product.rating / 5) * 100;
+  ratingEl.innerHTML = `
+    <div class="rating">
+      <div class="product_rate" style="width:${ratingPercent}%"></div>
+    </div>
+    <span class="rating_num">(${product.reviewCount} reviews)</span>
+  `;
+
+  // Short Description
+  document.getElementById('productShortDesc').textContent = product.shortDescription || product.description || '';
+
+  // Features (Warranty, Return, COD)
+  const featuresEl = document.getElementById('productFeatures');
+  let featuresHtml = '';
+  if (product.warranty) {
+    featuresHtml += `<li><img src="images/desc-ic1.jpg" /> ${product.warranty}</li>`;
+  }
+  if (product.returnPolicy) {
+    featuresHtml += `<li><img src="images/desc-ic2.jpg" /> ${product.returnPolicy}</li>`;
+  }
+  if (product.cashOnDelivery) {
+    featuresHtml += `<li><img src="images/desc-ic3.jpg" /> Cash on Delivery available</li>`;
+  }
+  featuresEl.innerHTML = featuresHtml;
+
+  // Full Description
+  const descEl = document.getElementById('productDescription');
+  if (product.description) {
+    descEl.innerHTML = `<p>${product.description.replace(/\n/g, '</p><p>')}</p>`;
+  } else {
+    descEl.innerHTML = '<p>No description available.</p>';
+  }
+
+  // Specifications
+  const specsEl = document.getElementById('productSpecifications').querySelector('tbody');
+  if (product.specifications && product.specifications.length > 0) {
+    specsEl.innerHTML = product.specifications.map(spec => `
+      <tr>
+        <td>${spec.label}</td>
+        <td>${spec.value}</td>
+      </tr>
+    `).join('');
+  } else {
+    specsEl.innerHTML = '<tr><td colspan="2">No specifications available.</td></tr>';
+  }
+
+  // Images
+  if (product.images && product.images.length > 0) {
+    // Main image
+    const mainImg = document.getElementById('mainImg');
+    mainImg.src = product.mainImage || product.images[0];
+
+    // Thumbnails
+    const thumbsEl = document.getElementById('productThumbnails');
+    thumbsEl.innerHTML = product.images.map((img, idx) => `
+      <img src="${img}" onclick="changeImage(this)" class="${idx === product.primaryImageIndex ? 'active-thumb' : ''}">
+    `).join('');
+  }
+
+  // Feature Boxes (4 boxes)
+  const boxesEl = document.getElementById('featureBoxes');
+  const defaultIcons = ['images/desc-fti1.jpg', 'images/desc-fti2.jpg', 'images/desc-fti3.jpg', 'images/desc-fti4.jpg'];
+  const features = product.featureBoxes && product.featureBoxes.length > 0
+    ? product.featureBoxes
+    : [
+        { title: 'Premium Quality', subtitle: 'Best materials' },
+        { title: 'Handicrafted', subtitle: 'Traditional design' },
+        { title: 'Smooth smoke', subtitle: 'Ultimate experience' },
+        { title: 'Perfect gift', subtitle: 'For hookah lovers' }
+      ];
+
+  boxesEl.innerHTML = features.map((box, idx) => `
+    <div class="col-3">
+      <div class="bx">
+        <div class="left"><img src="${box.icon || defaultIcons[idx]}" /></div>
+        <div class="right">
+          <h3>${box.title}</h3>
+          <p>${box.subtitle}</p>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  // Load related products
+  loadRelatedProducts(product.category?._id || product.category);
+}
+
+// Load related products from same category
+async function loadRelatedProducts(categoryId) {
+  try {
+    const response = await fetch(`${API_BASE}/api/products`);
+    const result = await response.json();
+
+    if (!result.success) return;
+
+    // Filter out current product and limit to 6 products
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentId = urlParams.get('id');
+
+    let relatedProducts = result.data
+      .filter(p => p._id !== currentId)
+      .slice(0, 6);
+
+    if (relatedProducts.length === 0) return;
+
+    const container = document.getElementById('relatedProducts');
+    container.innerHTML = relatedProducts.map(product => {
+      const badgeHtml = product.badge ? `<span class="pr_flash ${getBadgeClass(product.badge)}">${product.badge}</span>` : '';
+      const priceHtml = product.comparePrice > 0 && product.comparePrice > product.price
+        ? `<span class="price">$${product.price.toFixed(2)}</span><del>$${product.comparePrice.toFixed(2)}</del><div class="on_sale"><span>${product.discount}% Off</span></div>`
+        : `<span class="price">$${product.price.toFixed(2)}</span>`;
+      const image = product.mainImage || (product.images && product.images[0]) || 'images/product_img-1.png';
+      const ratingPercent = (product.rating / 5) * 100;
+
+      return `
+        <div class="item">
+          <div class="product">
+            ${badgeHtml}
+            <div class="product_imgs">
+              <a href="product-description.html?id=${product._id}">
+                <img src="${image}" alt="${product.name}">
+              </a>
+            </div>
+            <div class="product_info">
+              <h6 class="product_title"><a href="product-description.html?id=${product._id}">${product.name}</a></h6>
+              <div class="product_price">
+                ${priceHtml}
+              </div>
+              <div class="star_rating">
+                <span data-value="1"><i class="${ratingPercent >= 20 ? 'fas' : 'far'} fa-star"></i></span>
+                <span data-value="2"><i class="${ratingPercent >= 40 ? 'fas' : 'far'} fa-star"></i></span>
+                <span data-value="3"><i class="${ratingPercent >= 60 ? 'fas' : 'far'} fa-star"></i></span>
+                <span data-value="4"><i class="${ratingPercent >= 80 ? 'fas' : 'far'} fa-star"></i></span>
+                <span data-value="5"><i class="${ratingPercent >= 100 ? 'fas' : 'far'} fa-star"></i></span>
+              </div>
+              <button class="add-btn" onclick="location.href='product-description.html?id=${product._id}'">Shop Now</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Re-initialize owl carousel
+    if (typeof $ !== 'undefined' && $('.owl-carousel').length) {
+      $('.owl-carousel').owlCarousel('destroy');
+      carousel_slider();
+    }
+  } catch (error) {
+    console.error('Failed to load related products:', error);
+  }
+}
+
+function getBadgeClass(badge) {
+  if (!badge) return '';
+  const lower = badge.toLowerCase();
+  if (lower.includes('new')) return 'new';
+  if (lower.includes('best') || lower.includes('seller')) return 'best';
+  if (lower.includes('offer') || lower.includes('%')) return 'offer';
+  return '';
+}
+</script>
+</body>
+</html>

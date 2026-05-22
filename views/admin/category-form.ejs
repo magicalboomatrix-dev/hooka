@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">
+      <i class="fas fa-<%= category ? 'edit' : 'plus' %>" style="color: var(--primary);"></i>
+      <%= category ? 'Edit Category' : 'Add New Category' %>
+    </h3>
+  </div>
+  <div class="card-body">
+    <form action="<%= category ? '/admin/categories/' + category._id + '?_method=PUT' : '/admin/categories' %>" method="POST" enctype="multipart/form-data">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="name">Category Name <span style="color: var(--danger);">*</span></label>
+          <input type="text" id="name" name="name" required 
+                 value="<%= category ? category.name : '' %>"
+                 placeholder="e.g., Hookahs">
+        </div>
+        
+        <div class="form-group">
+          <label for="displayOrder">Display Order</label>
+          <input type="number" id="displayOrder" name="displayOrder" min="0"
+                 value="<%= category ? category.displayOrder : '0' %>"
+                 placeholder="0">
+        </div>
+        
+        <div class="form-group full-width">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" rows="3"
+                    placeholder="Enter category description..."><%= category ? category.description : '' %></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="image">Category Image</label>
+          <input type="file" id="image" name="image" accept="image/*">
+          <% if (category && category.image) { %>
+            <div style="margin-top: 12px;">
+              <img src="<%= category.image %>" alt="Current" style="max-width: 150px; border-radius: 8px;">
+              <p style="font-size: 12px; color: var(--gray); margin-top: 4px;">Current image</p>
+            </div>
+          <% } %>
+        </div>
+        
+        <div class="form-group">
+          <label>Status</label>
+          <div class="checkbox-wrapper" style="margin-top: 8px;">
+            <input type="checkbox" id="isActive" name="isActive" <%= !category || category.isActive ? 'checked' : '' %>>
+            <label for="isActive">Active (visible on website)</label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-save"></i>
+          <%= category ? 'Update Category' : 'Create Category' %>
+        </button>
+        <a href="/admin/categories" class="btn btn-secondary">
+          <i class="fas fa-times"></i> Cancel
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

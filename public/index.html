@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desi Hookah</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet"> 
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+<link href="css/style.css" rel="stylesheet">
+<link href="css/all.min.css" rel="stylesheet">
+<link href="css/flaticon.css" rel="stylesheet">
+<link href="css/ionicons.min.css" rel="stylesheet">
+<link href="css/linearicons.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/themify-icons.css" rel="stylesheet">
+
+
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <!--div class="container topbar-inner">
+    <div class="top-left">
+      <span><i class="flaticon-shipped"></i> Free Standard Shipping on All Australian Orders Over $99</span>
+    </div>
+    <div class="top-right">
+      <span>English ▼</span>
+      <span class="divider">|</span>
+      <span>USD ▼</span>
+      <span class="divider">|</span>
+      <span><i class="linearicons-phone-bubble"></i> 123-456-7890</span>
+      <span class="divider">|</span>
+      <span><i class="linearicons-envelope"></i> desihookah@gmail.com</span>
+      <span class="divider">|</span>
+      <span>Login / Register</span>
+    </div>
+  </div-->
+</div>
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="container flex">
+    
+	<a class="navbar-brand" href="index.html">                   
+		<img class="logo_dark" src="images/HUKKA-logo.png" alt="logo">
+	</a>
+	<div class="hamburger" id="hamburger">☰</div>
+    <div class="nav-links">
+      <div class="nav-item"><a href="index.html">Home</a></div>
+      <div class="nav-item"><a href="product-list.html">Shop</a></div>
+      <div class="nav-item dropdown">
+	  <a href="#">Categories <div class="box-icon-icon linearicons-chevron-down"></div></a>
+
+	  <!-- Desktop Dropdown -->
+	  <div class="dropdown-menu" id="desktopCatMenu">
+		<!-- Categories loaded dynamically -->
+	  </div>
+	  </div>
+
+      <div class="nav-item"><a href="contact-us.html">Contact</a></div>
+    </div>
+	
+	<div class="mobile-menu" id="mobileMenu">
+	  <div class="nav-iteme"><a href="index.html">Home</a></div>
+	  <div class="nav-iteme"><a href="product-list.html">Shop</a></div>
+	  <div class="mobile-dropdown">
+		  <div class="mobile-drop-head" id="mobileCatToggle">
+			Categories ▾
+		  </div>
+		  <div class="mobile-drop-menu" id="mobileCatMenu">
+			<!-- Categories loaded dynamically -->
+		  </div>
+		</div>
+
+	  <div class="nav-iteme"><a href="contact-us.html">Contact</a></div>
+	</div>
+    <!--div class="nav-right">
+      <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" class="icon" alt="search">
+      <img src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" class="icon" alt="user">
+      <div class="icon" id="cartIcon">
+        <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" width="20">
+        <span class="cart-count">2</span>
+        <div class="cart-dropdown" id="cartDropdown">
+          <div class="cart-item"><span>Hookah Chillum</span><span>$45</span></div>
+          <div class="cart-item"><span>Desi Patta</span><span>$55</span></div>
+          <div class="cart-total">Total: $100</div>
+        </div>
+      </div>
+    </div-->
+  </div>
+</div>
+
+<!-- Hero -->
+<div class="hero-section">
+<div class="hero container animate">
+  <div class="hero-twrap">
+  <div class="hero-text">
+    <div class="hero-sub">PREMIUM COLLECTION</div>
+    <h1><b>Experience <span>Premium Hookah</span> Culture</b></h1>
+    <p>Handcrafted designs for smooth and rich smoke experience.</p>
+    <button class="btn btn-primary">Shop Now</button>
+    <button class="btn btn-outline">Explore Collection</button>
+  </div> 
+  <div class="hero-features">
+    <div class="hero-feature"><div class="ic"><img src="images/banner-ic1.jpg"></div><div class="tx"><strong>Premium Quality</strong><br>Handcrafted Products</div></div>
+    <div class="hero-feature"><div class="ic"><img src="images/banner-ic2.jpg"></div><div class="tx"><strong>Smooth & Rich</strong><br>Smoke Experience</div></div>
+    <div class="hero-feature"><div class="ic"><img src="images/banner-ic3.jpg"></div><div class="tx"><strong>Secure Packaging</strong><br>Safe Delivery</div></div>
+    <div class="hero-feature"><div class="ic"><img src="images/banner-ic4.jpg"></div><div class="tx"><strong>Loved by Thousands</strong><br>Happy Customers</div></div>
+  </div>
+  </div>
+  
+</div>
+<div class="hero-bgimage"><img src="images/hm-banner-image.png" alt="hookah"></div>	
+</div>
+
+
+<!-- Categories -->
+<div class="section category-section container animate">
+  <div class="title-head"><h2 class="page-heading"><img src="images/orm-l.jpg" alt="image"> Shop By Category <img src="images/orm-r.jpg" alt="image"></h2></div>
+  <div class="grid" id="categoriesGrid">
+    <!-- Categories loaded dynamically -->
+  </div>
+</div>
+
+<!-- Products -->
+<div class="section container animate">
+  <div class="products-header">
+    <div class="left">
+	<div class="title-head">
+	<h2 class="page-heading"><img src="images/orm-l.jpg" alt="image"> Our Best Sellers <img src="images/orm-r.jpg" alt="image"></h2>
+	<p>Handpicked favorites loved by our customers.</p>
+	</div>
+    </div>
+    <a href="product-list.html" class="view-all">View All Products →</a>
+  </div>
+
+  <div class="products" id="productsGrid">
+    <!-- Products loaded dynamically -->
+  </div>
+</div>
+
+<!-- Why + Testimonials -->
+<div class="container testimonials-seciton">
+  <div style="" class="testimonials-col">
+    <div class="why-section animate">
+      <h2 style="text-align:center;font-family:'Playfair Display'"><img src="images/orm-l.jpg" alt="image">  Why Choose Desi Hookah? <img src="images/orm-r.jpg" alt="image"> </h2>
+      <div class="why-grid">
+        <div class="why-item">
+		<img src="images/ch-i1.jpg" alt="image"> 
+		<h4>Premium Quality</h4><p>We use only high quality materials.</p>
+		</div>
+        <div class="why-item">
+		<img src="images/ch-i2.jpg" alt="image">
+		<h4>Handcrafted</h4><p>Each product is carefully handcrafted.</p>
+		</div>
+        <div class="why-item">
+		<img src="images/ch-i3.jpg" alt="image">
+		<h4>Smooth Experience</h4><p>Designed for smooth & rich smoke.</p>
+		</div>
+        <div class="why-item">
+		<img src="images/ch-i4.jpg" alt="image">
+		<h4>Fast Delivery</h4><p>Quick and safe delivery at your door.</p>
+		</div>
+      </div>
+    </div>
+
+    <div class="testimonial animate">
+      <h3>What Our Customers Say</h3>
+	  <img src="images/qt-icon.jpg" class="qt" alt="image">
+      <div style="margin-top:35px;color: #111;">
+	  <p id="testimonial-text" style="color: #111;">"Amazing quality and smooth experience."</p>
+      <div class="user" id="testimonial-user">Alex ★★★★★</div>
+	   </div>
+      <div style="text-align:center;margin-top:10px">
+        <button id="prevTest"><img src="images/left-arw.jpg" alt="image"></button>
+        <button id="nextTest"><img src="images/right-arw.jpg" alt="image"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="features-bar animate">
+    <div class="bx">
+	<div class="icon"><img src="images/ch-ic1.jpg" alt="image"></div>
+	<div class="text">
+	<strong>Free Delivery</strong>
+	<p>On all orders over $50</p>
+	</div>
+	</div>
+	<div class="bx">
+	<div class="icon"><img src="images/ch-ic1.jpg" alt="image"></div>
+	<div class="text">
+	<strong>30 Day Return</strong>
+	<p>Money back guarantee</p>
+	</div>
+	</div>
+	<div class="bx">
+	<div class="icon"><img src="images/ch-ic3.jpg" alt="image"></div>
+	<div class="text">
+	<strong>24/7 Support</strong>
+	<p>Dedicated support</p>
+	</div>
+	</div>
+	<div class="bx">
+	<div class="icon"><img src="images/ch-ic4.jpg" alt="image"></div>
+	<div class="text">
+	<strong>24/7 Support</strong>
+	<p>100% secure payment</p>
+	</div>
+	</div>
+    
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer" style="background:#6b1616;padding:50px 0 0">
+  <div class="container">
+
+    <div class="container-inn" style="">
+      
+      <!-- Logo + About -->
+      <div>
+        <a class="navbar-brand" href="index.html">                   
+		<img class="logo_dark" src="images/HUKKA-logo.png" alt="logo">
+		</a>
+        <p style="color:#ddd;line-height:1.7;font-size:14px;margin-bottom:15px">
+          Premium handcrafted hookahs designed for smooth and rich smoking experience. Built with tradition and modern quality.
+        </p>
+        <div style="display:flex;gap:10px" class='meida-icons'>
+          <a href="#"><img class="ic" src="images/sci1.jpg" alt="icon"></a>
+          <a href="#"><img class="ic" src="images/sci2.jpg" alt="icon"></a>
+          <a href="#"><img class="ic" src="images/sci3.jpg" alt="icon"></a>
+          <a href="#"><img class="ic" src="images/sci4.jpg" alt="icon"></a>
+          <a href="#"><img class="ic" src="images/sci5.jpg" alt="icon"></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 style="margin-bottom:15px">Quick Links</h4>
+        <ul style="list-style:none;color:#ddd;font-size:14px;line-height:2;padding: 0;">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="product-list.html">Shop</a></li>
+          <li><a href="product-list.html?category=hookaah">Categories</a></li>
+          <li><a href="contact-us.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Customer Service -->
+      <div>
+        <h4 style="margin-bottom:15px">Customer Service</h4>
+        <ul style="list-style:none;color:#ddd;font-size:14px;line-height:2;padding: 0;">
+          <li><a href="shipping-policy.html">Shipping Policy</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <h4 style="margin-bottom:15px">Subscribe Newsletter</h4>
+        <p style="color:#ddd;font-size:14px;margin-bottom:15px">Get updates on latest products & offers</p>
+        <div style="display:flex;background:#fff;border-radius:6px;overflow:hidden">
+          <input type="email" placeholder="Your email" style="flex:1;padding:10px;border:none;outline:none">
+          <button style="background:#000;color:#fff;padding:10px 15px;border:none">→</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Footer -->
+    <div style="justify-content: center;border-top:1px solid rgba(255,255,255,0.2);padding:15px 0;display:flex;align-items:center;flex-wrap:wrap">
+      <p style="color:#ddd;font-size:13px">© 2026 Desi Hookah. All Rights Reserved.</p>
+     
+      <!--div style="display:flex;gap:10px;margin-top:10px">
+        <span>💳</span>
+        <span>💳</span>
+        <span>💳</span>
+      </div-->
+    </div>
+
+  </div>
+</div>
+
+<script src="js/jquery-3.7.1.min.js"></script> 
+<script src="bootstrap/js/bootstrap.min.js"></script> 
+<!-- owl-carousel min js  --> 
+<script src="owlcarousel/js/owl.carousel.min.js"></script>
+<script>
+
+// Mobile category dropdown
+const mobileCatToggle = document.getElementById('mobileCatToggle');
+const mobileCatMenu = document.getElementById('mobileCatMenu');
+
+mobileCatToggle.addEventListener('click', () => {
+  mobileCatMenu.classList.toggle('active');
+});
+
+
+// Cart toggle
+const cartIcon=document.getElementById('cartIcon');
+const cartDropdown=document.getElementById('cartDropdown');
+cartIcon.addEventListener('click',()=>cartDropdown.classList.toggle('active'));
+window.addEventListener('click',(e)=>{if(!cartIcon.contains(e.target)){cartDropdown.classList.remove('active');}});
+
+// Testimonial slider
+const testimonials=[
+{text:'"Amazing quality and smooth experience."',user:'Alex ★★★★★'},
+{text:'"Premium build and fast delivery."',user:'Rahul ★★★★★'},
+{text:'"Great support and products."',user:'Sarah ★★★★☆'}
+];
+let i=0;
+const textEl=document.getElementById('testimonial-text');
+const userEl=document.getElementById('testimonial-user');
+function update(){textEl.innerText=testimonials[i].text;userEl.innerText=testimonials[i].user;}
+document.getElementById('nextTest').onclick=()=>{i=(i+1)%testimonials.length;update();};
+document.getElementById('prevTest').onclick=()=>{i=(i-1+testimonials.length)%testimonials.length;update();};
+setInterval(()=>{i=(i+1)%testimonials.length;update();},4000);
+</script>
+<script>
+
+$(document).ready(function () {
+	  $('.star_rating span').on('click', function(){
+			var onStar = parseFloat($(this).data('value'), 10); // The star currently selected
+			var stars = $(this).parent().children('.star_rating span');
+			for (var i = 0; i < stars.length; i++) {
+				$(stars[i]).removeClass('selected');
+			}
+			for (i = 0; i < onStar; i++) {
+				$(stars[i]).addClass('selected');
+			}
+		});
+	});
+	
+</script>
+
+<script>
+// Mobile menu toggle
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('active');
+});
+
+// Close menu on outside click
+window.addEventListener('click', (e) => {
+  if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+    mobileMenu.classList.remove('active');
+  }
+});
+
+// Scroll Animation Observer
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+},{threshold:0.2});
+
+document.querySelectorAll('.animate').forEach(el=>observer.observe(el));
+
+// Dynamic Data Loading from API
+const API_BASE = window.location.origin;
+
+// Load Categories
+async function loadCategories() {
+  try {
+    const response = await fetch(`${API_BASE}/api/categories`);
+    const result = await response.json();
+    
+    if (result.success && result.data.length > 0) {
+      // Categories Grid
+      const categoriesGrid = document.getElementById('categoriesGrid');
+      if (categoriesGrid) {
+        const categoriesHtml = result.data.map(cat => `
+          <div class="card">
+            <img src="${cat.image || 'images/cate-th1.jpg'}" alt="${cat.name}">
+            <div class="info">
+              <h4>${cat.name}</h4>
+              <a href="product-list.html?category=${cat.slug}" class="cat-btn">Explore Collection →</a>
+            </div>
+          </div>
+        `).join('');
+        categoriesGrid.innerHTML = categoriesHtml;
+      }
+      
+      // Desktop Dropdown Menu
+      const desktopCatMenu = document.getElementById('desktopCatMenu');
+      if (desktopCatMenu) {
+        const dropdownHtml = result.data.map(cat => 
+          `<a href="product-list.html?category=${cat.slug}">${cat.name}</a>`
+        ).join('');
+        desktopCatMenu.innerHTML = dropdownHtml;
+      }
+      
+      // Mobile Dropdown Menu
+      const mobileCatMenu = document.getElementById('mobileCatMenu');
+      if (mobileCatMenu) {
+        const mobileDropdownHtml = result.data.map(cat => 
+          `<a href="product-list.html?category=${cat.slug}">${cat.name}</a>`
+        ).join('');
+        mobileCatMenu.innerHTML = mobileDropdownHtml;
+      }
+    }
+  } catch (error) {
+    console.error('Failed to load categories:', error);
+  }
+}
+
+// Load Products
+async function loadProducts() {
+  try {
+    const response = await fetch(`${API_BASE}/api/products?featured=true&limit=8`);
+    const result = await response.json();
+    
+    if (result.success && result.data.length > 0) {
+      const productsGrid = document.getElementById('productsGrid');
+      const productsHtml = result.data.map(product => {
+        const badgeHtml = product.badge ? `<span class="pr_flash ${product.badge.toLowerCase().replace(' ', '-')}">${product.badge}</span>` : '';
+        const comparePriceHtml = product.comparePrice > 0 ? `<del>$${product.comparePrice.toFixed(2)}</del>` : '';
+        const discountHtml = product.discount > 0 ? `<div class="on_sale"><span>${product.discount}% Off</span></div>` : '';
+        
+        return `
+        <div class="product">
+          ${badgeHtml}
+          <img src="${product.mainImage || 'images/product_img-1.png'}" alt="${product.name}">
+          <div class="product-desc">
+            <p>${product.name}</p>
+            <div class="star_rating">
+              <span><i class="far fa-star"></i></span>
+              <span><i class="far fa-star"></i></span>
+              <span><i class="far fa-star"></i></span>
+              <span><i class="far fa-star"></i></span>
+              <span><i class="far fa-star"></i></span>
+            </div>
+            <div class="product_price">
+              <span class="price">$${product.price.toFixed(2)}</span>
+              ${comparePriceHtml}
+              ${discountHtml}
+            </div>
+            <button class="add-btn" onclick="window.location.href='product-description.html?id=${product._id}'">Shop Now</button>
+          </div>
+        </div>
+        `;
+      }).join('');
+      productsGrid.innerHTML = productsHtml;
+    }
+  } catch (error) {
+    console.error('Failed to load products:', error);
+  }
+}
+
+// Load data when page loads
+document.addEventListener('DOMContentLoaded', () => {
+  loadCategories();
+  loadProducts();
+});
+</script>
+
+</body>
+</html>

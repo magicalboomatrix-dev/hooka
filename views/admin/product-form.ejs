@@ -1,0 +1,428 @@
+<style>
+  .image-upload-container {
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  .image-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+  }
+  .image-preview-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .image-preview-item.primary {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary);
+  }
+  .image-preview-item img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+  }
+  .image-preview-item .delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  .image-preview-item .set-primary {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 2px 5px;
+    font-size: 10px;
+    cursor: pointer;
+  }
+  .spec-row, .feature-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+  .spec-row input, .feature-row input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+  }
+  .add-btn-small {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .remove-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .section-divider {
+    border-top: 2px solid #e2e8f0;
+    margin: 25px 0;
+    padding-top: 20px;
+  }
+  .section-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+</style>
+
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">
+      <i class="fas fa-<%= product ? 'edit' : 'plus' %>" style="color: var(--primary);"></i>
+      <%= product ? 'Edit Product' : 'Add New Product' %>
+    </h3>
+  </div>
+  <div class="card-body">
+    <form action="<%= product ? '/admin/products/' + product._id + '?_method=PUT' : '/admin/products' %>" method="POST" enctype="multipart/form-data" id="productForm">
+      <div class="form-grid">
+        <!-- Basic Info -->
+        <div class="form-group full-width">
+          <label for="name">Product Name <span style="color: var(--danger);">*</span></label>
+          <input type="text" id="name" name="name" required 
+                 value="<%= product ? product.name : '' %>"
+                 placeholder="e.g., Premium Glass Hookah">
+        </div>
+
+        <div class="form-group full-width">
+          <label for="shortDescription">Short Description</label>
+          <input type="text" id="shortDescription" name="shortDescription" maxlength="200"
+                 value="<%= product ? product.shortDescription : '' %>"
+                 placeholder="Brief product description for listings">
+        </div>
+
+        <div class="form-group full-width">
+          <label for="description">Full Description</label>
+          <textarea id="description" name="description" rows="4"
+                    placeholder="Detailed product description..."><%= product ? product.description : '' %></textarea>
+        </div>
+
+        <!-- Pricing -->
+        <div class="form-group">
+          <label for="price">Price ($) <span style="color: var(--danger);">*</span></label>
+          <input type="number" id="price" name="price" step="0.01" min="0" required
+                 value="<%= product ? product.price : '' %>"
+                 placeholder="45.00">
+        </div>
+
+        <div class="form-group">
+          <label for="comparePrice">Compare at Price ($) <small style="color: var(--gray);">(Optional, shows discount)</small></label>
+          <input type="number" id="comparePrice" name="comparePrice" step="0.01" min="0"
+                 value="<%= product ? product.comparePrice : '' %>"
+                 placeholder="55.00">
+        </div>
+
+        <!-- Category & Inventory -->
+        <div class="form-group">
+          <label for="category">Category <span style="color: var(--danger);">*</span></label>
+          <select id="category" name="category" required>
+            <option value="">Select Category</option>
+            <% categories.forEach(cat => { %>
+              <option value="<%= cat._id %>" <%= product && product.category && product.category.toString() === cat._id.toString() ? 'selected' : '' %>>
+                <%= cat.name %>
+              </option>
+            <% }) %>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="stock">Stock Quantity</label>
+          <input type="number" id="stock" name="stock" min="0"
+                 value="<%= product ? product.stock : '0' %>">
+        </div>
+
+        <div class="form-group">
+          <label for="sku">SKU <small style="color: var(--gray);">(Optional)</small></label>
+          <input type="text" id="sku" name="sku"
+                 value="<%= product ? product.sku : '' %>"
+                 placeholder="HOOK-001">
+        </div>
+
+        <div class="form-group">
+          <label for="badge">Badge</label>
+          <select id="badge" name="badge">
+            <option value="">No Badge</option>
+            <option value="New" <%= product && product.badge === 'New' ? 'selected' : '' %>>New</option>
+            <option value="BEST SELLER" <%= product && product.badge === 'BEST SELLER' ? 'selected' : '' %>>Best Seller</option>
+            <option value="Offer" <%= product && product.badge === 'Offer' ? 'selected' : '' %>>Offer</option>
+            <option value="Sale" <%= product && product.badge === 'Sale' ? 'selected' : '' %>>Sale</option>
+            <option value="Hot" <%= product && product.badge === 'Hot' ? 'selected' : '' %>>Hot</option>
+          </select>
+        </div>
+
+        <!-- Status -->
+        <div class="form-group">
+          <label>Status Options</label>
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 8px;">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="isActive" name="isActive" <%= !product || product.isActive ? 'checked' : '' %>>
+              <label for="isActive">Active (visible on website)</label>
+            </div>
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="isFeatured" name="isFeatured" <%= product && product.isFeatured ? 'checked' : '' %>>
+              <label for="isFeatured">Featured (show on homepage)</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Info/Warranty -->
+        <div class="form-group">
+          <label for="warranty">Warranty</label>
+          <input type="text" id="warranty" name="warranty"
+                 value="<%= product ? product.warranty : '1 Year Warranty' %>"
+                 placeholder="e.g., 1 Year Warranty">
+        </div>
+
+        <div class="form-group">
+          <label for="returnPolicy">Return Policy</label>
+          <input type="text" id="returnPolicy" name="returnPolicy"
+                 value="<%= product ? product.returnPolicy : '30 Day Return Policy' %>"
+                 placeholder="e.g., 30 Day Return Policy">
+        </div>
+
+        <div class="form-group" style="display: flex; flex-direction: column; justify-content: center;">
+          <div class="checkbox-wrapper" style="margin-top: 25px;">
+            <input type="checkbox" id="cashOnDelivery" name="cashOnDelivery" <%= !product || product.cashOnDelivery ? 'checked' : '' %>>
+            <label for="cashOnDelivery">Cash on Delivery Available</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Multiple Images Section -->
+      <div class="section-divider">
+        <div class="section-title">
+          <i class="fas fa-images" style="color: var(--primary);"></i>
+          Product Images
+          <small style="color: var(--gray); font-weight: normal;">(Select primary image for product card)</small>
+        </div>
+
+        <div class="image-upload-container">
+          <input type="file" id="images" name="images" accept="image/*" multiple style="display: none;">
+          <button type="button" class="btn btn-secondary" onclick="document.getElementById('images').click()">
+            <i class="fas fa-cloud-upload-alt"></i> Choose Images
+          </button>
+          <p style="color: var(--gray); font-size: 12px; margin-top: 10px;">You can select multiple images. Max 10 images, 5MB each.</p>
+        </div>
+
+        <!-- Existing Images (for edit) -->
+        <% if (product && product.images && product.images.length > 0) { %>
+        <div class="image-preview-grid" id="existingImages">
+          <% product.images.forEach((img, idx) => { %>
+          <div class="image-preview-item <%- product.primaryImageIndex === idx ? 'primary' : '' %>" data-index="<%- idx %>">
+            <img src="<%= img %>" alt="Product image <%= idx + 1 %>">
+            <button type="button" class="delete-btn" onclick="markImageForDeletion(this, <%- idx %>)">
+              <i class="fas fa-times"></i>
+            </button>
+            <button type="button" class="set-primary" onclick="setPrimaryImage(<%- idx %>)">
+              <%= product.primaryImageIndex === idx ? '★ Primary' : 'Set Primary' %>
+            </button>
+          </div>
+          <% }) %>
+        </div>
+        <% } %>
+
+        <!-- New Images Preview -->
+        <div class="image-preview-grid" id="newImagePreview"></div>
+
+        <input type="hidden" name="primaryImageIndex" id="primaryImageIndex" value="<%= product ? product.primaryImageIndex : 0 %>">
+        <div id="deleteImageInputs"></div>
+      </div>
+
+      <!-- Specifications Section -->
+      <div class="section-divider">
+        <div class="section-title">
+          <i class="fas fa-list" style="color: var(--primary);"></i>
+          Specifications / Additional Info
+          <button type="button" class="add-btn-small" onclick="addSpecRow()">
+            <i class="fas fa-plus"></i> Add
+          </button>
+        </div>
+
+        <div id="specificationsContainer">
+          <% if (product && product.specifications && product.specifications.length > 0) { %>
+            <% product.specifications.forEach((spec, idx) => { %>
+            <div class="spec-row">
+              <input type="text" name="specLabel" value="<%= spec.label %>" placeholder="Label (e.g., Material)">
+              <input type="text" name="specValue" value="<%= spec.value %>" placeholder="Value (e.g., Glass)">
+              <button type="button" class="remove-btn" onclick="this.parentElement.remove()">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+            <% }) %>
+          <% } else { %>
+          <div class="spec-row">
+            <input type="text" name="specLabel" placeholder="Label (e.g., Material)">
+            <input type="text" name="specValue" placeholder="Value (e.g., Glass)">
+            <button type="button" class="remove-btn" onclick="this.parentElement.remove()">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+          <% } %>
+        </div>
+      </div>
+
+      <!-- Feature Boxes Section -->
+      <div class="section-divider">
+        <div class="section-title">
+          <i class="fas fa-th-large" style="color: var(--primary);"></i>
+          Feature Boxes (4 boxes shown on product page)
+        </div>
+
+        <div id="featureBoxesContainer">
+          <% const defaultFeatures = product && product.featureBoxes && product.featureBoxes.length > 0
+            ? product.featureBoxes
+            : [
+              { title: 'Premium Quality', subtitle: 'Best materials' },
+              { title: 'Handicrafted', subtitle: 'Traditional design' },
+              { title: 'Smooth smoke', subtitle: 'Ultimate experience' },
+              { title: 'Perfect gift', subtitle: 'For hookah lovers' }
+            ]; %>
+
+          <% defaultFeatures.forEach((feature, idx) => { %>
+          <div class="feature-row">
+            <input type="text" name="featureTitle" value="<%= feature.title %>" placeholder="Title (e.g., Premium Quality)">
+            <input type="text" name="featureSubtitle" value="<%= feature.subtitle %>" placeholder="Subtitle (e.g., Best materials)">
+            <span style="color: var(--gray); font-size: 12px;">Icon <%= idx + 1 %></span>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-save"></i>
+          <%= product ? 'Update Product' : 'Create Product' %>
+        </button>
+        <a href="/admin/products" class="btn btn-secondary">
+          <i class="fas fa-times"></i> Cancel
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Auto-generate SKU from product name
+  document.getElementById('name').addEventListener('blur', function() {
+    const skuField = document.getElementById('sku');
+    if (!skuField.value && this.value) {
+      const prefix = this.value.split(' ').map(w => w[0]).join('').toUpperCase().substring(0, 4);
+      const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+      skuField.value = prefix + '-' + random;
+    }
+  });
+
+  // Image handling
+  let selectedFiles = [];
+  let imagesToDelete = [];
+
+  document.getElementById('images').addEventListener('change', function(e) {
+    const files = Array.from(e.target.files);
+    selectedFiles = [...selectedFiles, ...files];
+    updateNewImagePreview();
+  });
+
+  function updateNewImagePreview() {
+    const container = document.getElementById('newImagePreview');
+    container.innerHTML = '';
+
+    selectedFiles.forEach((file, idx) => {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const div = document.createElement('div');
+        div.className = 'image-preview-item';
+        div.innerHTML = `
+          <img src="${e.target.result}" alt="New image ${idx + 1}">
+          <button type="button" class="delete-btn" onclick="removeNewImage(${idx})">
+            <i class="fas fa-times"></i>
+          </button>
+        `;
+        container.appendChild(div);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function removeNewImage(index) {
+    selectedFiles.splice(index, 1);
+    updateNewImagePreview();
+  }
+
+  function markImageForDeletion(btn, index) {
+    imagesToDelete.push(index);
+    btn.closest('.image-preview-item').style.opacity = '0.3';
+    btn.style.display = 'none';
+
+    // Add hidden input for deletion
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'deleteImages';
+    input.value = index;
+    document.getElementById('deleteImageInputs').appendChild(input);
+  }
+
+  function setPrimaryImage(index) {
+    document.getElementById('primaryImageIndex').value = index;
+
+    // Update visual indicators
+    document.querySelectorAll('.image-preview-item').forEach((item, idx) => {
+      const btn = item.querySelector('.set-primary');
+      if (btn) {
+        if (idx === index) {
+          item.classList.add('primary');
+          btn.textContent = '★ Primary';
+        } else {
+          item.classList.remove('primary');
+          btn.textContent = 'Set Primary';
+        }
+      }
+    });
+  }
+
+  // Specifications handling
+  function addSpecRow() {
+    const container = document.getElementById('specificationsContainer');
+    const row = document.createElement('div');
+    row.className = 'spec-row';
+    row.innerHTML = `
+      <input type="text" name="specLabel" placeholder="Label (e.g., Material)">
+      <input type="text" name="specValue" placeholder="Value (e.g., Glass)">
+      <button type="button" class="remove-btn" onclick="this.parentElement.remove()">
+        <i class="fas fa-trash"></i>
+      </button>
+    `;
+    container.appendChild(row);
+  }
+</script>
